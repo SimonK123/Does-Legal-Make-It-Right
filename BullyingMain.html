@@ -23,8 +23,9 @@ var ctx = canvas.getContext('2d');
   This a multidimentional array
   Each string in the array is a different line
   ex: if the quote is ["blah blah blah", "yadda yadda yadda"] the yaddas will be on the lower line*/
-var Facts = [["According to a UK study,","50% of teen suicides are because of bullying"]];
-/*QuoteNum is the quote (in facts) it is currently displaying*/
+var Facts = [["According to a UK study,","50% of teen suicides are because of bullying"],["Many people feel the pressures","of being worse than others and being called out on it"]];
+/*QuoteNum is the quote (in facts)it is currently displaying*/
+
 var QuoteNum = 0;
 // writes stuff onto the canvas
 function write(text,x,y,color,font){
@@ -32,18 +33,22 @@ function write(text,x,y,color,font){
   ctx.fillStyle = color;
   ctx.fillText(text,x,y);
 }
+
 // instance of a name
 function scrollName (name){
 	this.name = name;
   this.x = 0;
   this.y = Math.floor(Math.random() * 5);
 }
+      
 //loop for everything else
 var mainLoop = function (){
   ctx.clearRect(0,0,canvas.width,canvas.height);
   //draw stuff here
   for (var i = 0; i < Facts[QuoteNum].length; i++) {
+
     //write(Facts[QuoteNum][i],(i+1)*10 - 1,(i+1)*10 - 1,'grey','10px Times New Roman');
+
     write(Facts[QuoteNum][i],(i+1)*10,(i+1)*10,'black','12px Times New Roman');
   }
 }
@@ -53,8 +58,13 @@ var interval = window.setInterval(mainLoop, 20);
 var changeQuote = function(){
 	QuoteNum = Math.floor(Math.random() * Facts.length);
 }
+
 // when to change the quote
 var quoteInterval = window.setInterval(changeQuote,10000);
+      
+// when to change the quote, change # to higher
+var quoteInterval = window.setInterval(changeQuote,3000);
+
 </script>
   </body>
 </html>
