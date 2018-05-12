@@ -14,6 +14,7 @@
     <canvas id="MyCanvas">
     </canvas>
     <script type='text/javascript'>
+      "use strict";
 //canvas stuff (DO NOT EDIT)
 // If you need to draw something on the canvas, use ctx.-
 var canvas = document.getElementById('MyCanvas');
@@ -25,7 +26,7 @@ var ctx = canvas.getContext('2d');
   ex: if the quote is ["blah blah blah", "yadda yadda yadda"] the yaddas will be on the lower line*/
 var Facts = [["According to a UK study,","50% of teen suicides are because of bullying"],["Many people feel the pressures","of being worse than others and being called out on it"]];
 /*QuoteNum is the quote (in facts)it is currently displaying*/
-
+var names = ['Eric Free', 'John Cena', 'Wyatt Bob','yee biu'];
 var QuoteNum = 0;
 // writes stuff onto the canvas
 function write(text,x,y,color,font){
@@ -34,36 +35,64 @@ function write(text,x,y,color,font){
   ctx.fillText(text,x,y);
 }
 
+// all of the instances of scrollName currently onscreen
+var namesRegister = {};
 // instance of a name
-function scrollName (name){
-	this.name = name;
+function scrollName(name) {
+  this.nameWrite = name;
   this.x = 0;
-  this.y = Math.floor(Math.random() * 5);
+  this.y = Math.floor(Math.random() * (canvas.width)/10)*10 + 25;
+  this.instatiate = function (){
+    console.log('yee',this);
+    write(this.nameWrite, this.x, this.y, 'black', '9px Times New Roman');
+    this.x += 1;
+    if(this.x >= canvas.width){
+      delete namesRegister[this.nameWrite];
+      console.log('dead');
+    } 
+  };
+  this.register = function(){
+    namesRegister[scrollName.nameWrite] = scrollName;
+  }
 }
-      
+
+function makeName (){
+  var nameMake = names[Math.floor(Math.random() * (names.length - 1))];
+  var objMake = new scrollName(nameMake);
+  if(!namesRegister.hasOwnProperty(nameMake)){
+    namesRegister[nameMake] = objMake;
+  }
+}
+
 //loop for everything else
 var mainLoop = function (){
   ctx.clearRect(0,0,canvas.width,canvas.height);
+  // draw names
+  var x = Object.keys(namesRegister);
+  console.log(x,namesRegister,x.length);
+  for (var i = 0; i < x.length; i++) {
+    var obj = namesRegister[x[i]];
+    obj.instatiate();
+    console.log('I work', obj);
+  }
   //draw stuff here
   for (var i = 0; i < Facts[QuoteNum].length; i++) {
-
-    //write(Facts[QuoteNum][i],(i+1)*10 - 1,(i+1)*10 - 1,'grey','10px Times New Roman');
-
     write(Facts[QuoteNum][i],(i+1)*10,(i+1)*10,'black','12px Times New Roman');
   }
-}
+  
+};
 // makes mainLoop repeat every 20 miliseconds
 var interval = window.setInterval(mainLoop, 20);
+var nameInterval = window.setInterval(makeName, 2000);
 // randomizes the quote displayed
 var changeQuote = function(){
-	QuoteNum = Math.floor(Math.random() * Facts.length);
+  QuoteNum = Math.floor(Math.random() * Facts.length);
 }
 
-// when to change the quote
-var quoteInterval = window.setInterval(changeQuote,10000);
+
       
 // when to change the quote, change # to higher
-var quoteInterval = window.setInterval(changeQuote,3000);
+var quoteInterval = window.setInterval(changeQuote,5000);
 
 </script>
   </body>
