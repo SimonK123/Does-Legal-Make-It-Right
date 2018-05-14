@@ -11,14 +11,22 @@
     </style>
   </head>
   <body>
+    <p>Gerrymandering is the process<br>by which lawmakers can<br> <strong>radically</strong> change the vote of<br><em>any</em> congressional election</p>
     <canvas id="MyCanvas">
     </canvas>
     <script type='text/javascript'>
 var populationCount = 100;
+var possibleSeats = 10;
+var arrangementPattern=0;
 var canvas = document.getElementById('MyCanvas');
 var ctx = canvas.getContext('2d');
+function write(text,x,y,color,font){
+ctx.font = font;
+ctx.fillStyle = color;
+ctx.fillText(text,x,y);
+}
 function intervalFunc(){
-// Insert Code here
+  write("text here",10,100,"black","70px Arial")/*PUT YOUR TEXT HERE IN "TEXT HERE" IF YOU WANT TO, IF NOT, DELETE IT*/
 }
 var interval = window.setInterval(intervalFunc,20);
 </script>
