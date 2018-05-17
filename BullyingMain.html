@@ -35,14 +35,13 @@ function write(text,x,y,color,font){
   ctx.fillStyle = color;
   ctx.fillText(text,x,y);
 }
-
 // all of the instances of scrollName currently onscreen
 var namesRegister = {};
 // instance of a name
 function scrollName(name) {
   this.nameWrite = name;
   this.x = 0;
-  this.y = Math.floor(Math.random() * (canvas.width - 20)/10)*10 + 20;
+  this.y = Math.floor(Math.random() * (canvas.width - 30)/10)*10 + 30;
   this.instatiate = function (){
     write(this.nameWrite, this.x, this.y, 'black', '9px Times New Roman');
     this.x += 1;
@@ -54,7 +53,6 @@ function scrollName(name) {
     namesRegister[scrollName.nameWrite] = scrollName;
   }
 }
-
 function makeName (){
   var nameMake;
   do {
@@ -63,12 +61,11 @@ function makeName (){
   var objMake = new scrollName(nameMake);
   namesRegister[nameMake] = objMake;
 }
-
 //loop for everything else
 var mainLoop = function (){
   ctx.clearRect(0,0,canvas.width,canvas.height);
   var grd = ctx.createLinearGradient(canvas.width - 20, canvas.height/2, canvas.width, canvas.height/2);
-  grd.addColorStop(0, 'white');
+  grd.addColorStop(0, 'rgba(0, 0, 0, 0)');
   grd.addColorStop(1, "black");
   ctx.fillStyle = grd;
   ctx.fillRect(canvas.width - 20, 0, 20, canvas.height);
@@ -92,12 +89,9 @@ var nameInterval = window.setInterval(makeName, 2000);
 var changeQuote = function(){
   QuoteNum = Math.floor(Math.random() * Facts.length);
 }
-
-
       
 // when to change the quote, change # to higher
 var quoteInterval = window.setInterval(changeQuote,5000);
-
 </script>
   </body>
 </html>
