@@ -28,7 +28,8 @@ ctx.fillText(text,x,y);
 function intervalFunc(){
   ctx.clearRect(0,0,canvas.width, canvas.height);
   write("Let's imagine the following situation:",10,10,"black","10px Arial");
-  write("There is a state with 50 voters, 30 for one party, 20 for another.",10,20,"black","10px Arial");
+  write("There is a state with 50 voters,",10,20,"black","10px Arial");
+  write("30 for one party, 20 for another.",10,30,"black","10px Arial");
   
   var col;
   var row;
@@ -39,10 +40,16 @@ function intervalFunc(){
         } else if (row >= 3){
         	ctx.fillStyle = "blue";
         }
-        ctx.fillRect((col * 15) + 10,(row * 15) + 24,10,10);
+        ctx.fillRect((col * 15)-4,(row * 15) + 30,10,10);//spacing:15px
     }
   }
- 
+ /*ctx.stroke();
+ ctx.rect(24,38,146,12);
+ ctx.rect(24,53,146,12);
+ ctx.rect(24,68,146,12);
+ ctx.rect(24,83,146,12);
+ ctx.rect(24,98,146,12);*/
+ //stroke to border "voters"
 }
 var interval = window.setInterval(intervalFunc,20);
 </script>
