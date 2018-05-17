@@ -42,7 +42,7 @@ var namesRegister = {};
 function scrollName(name) {
   this.nameWrite = name;
   this.x = 0;
-  this.y = Math.floor(Math.random() * (canvas.width)/10)*10 + 25;
+  this.y = Math.floor(Math.random() * (canvas.width - 20)/10)*10 + 20;
   this.instatiate = function (){
     write(this.nameWrite, this.x, this.y, 'black', '9px Times New Roman');
     this.x += 1;
@@ -86,7 +86,7 @@ var mainLoop = function (){
   
 };
 // makes mainLoop repeat every 20 miliseconds
-var interval = window.setInterval(mainLoop, 20);
+var interval = window.setInterval(mainLoop, 50);
 var nameInterval = window.setInterval(makeName, 2000);
 // randomizes the quote displayed
 var changeQuote = function(){
