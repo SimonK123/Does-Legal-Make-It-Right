@@ -15,6 +15,7 @@
     <canvas id="MyCanvas">
     </canvas>
     <script type='text/javascript'>
+
 var populationCount = 100;
 var possibleSeats = 10;
 var arrangementPattern=0;
@@ -26,8 +27,19 @@ ctx.fillStyle = color;
 ctx.fillText(text,x,y);
 }
 function intervalFunc(){
-  write("text here",10,100,"black","70px Arial")/*PUT YOUR TEXT HERE IN "TEXT HERE" IF YOU WANT TO, IF NOT, DELETE IT*/
-}
+  ctx.clearRect(0,0,canvas.width, canvas.height);
+  write("Let's imagine the following situation:",10,10,"black","10px Arial");
+  write("There is a state with 50 voters, 30 for one party, 20 for another.",10,20,"black","10px Arial");
+  ctx.fillStyle = "#FF0000";
+/*  var col;
+  var row;
+  for(col = 10; col <= 0; col -= 1){
+  	for(row = 5; row <= 0; row -= 1){
+  		ctx.fillRect(10,25,10,10);
+    }
+  }
+  
+}*/
 var interval = window.setInterval(intervalFunc,20);
 </script>
   </body>
