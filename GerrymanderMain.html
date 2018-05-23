@@ -15,10 +15,7 @@
     <canvas id="MyCanvas">
     </canvas>
     <script type='text/javascript'>
-var strokeType;
-var populationCount = 100;
-var possibleSeats = 10;
-var arrangementPattern=0;
+var strokeType=0;
 var canvas = document.getElementById('MyCanvas');
 var ctx = canvas.getContext('2d');
 function write(text,x,y,color,font){
@@ -51,18 +48,68 @@ function intervalFunc(){
       ctx.strokeRect(10,74,146,12);
       ctx.strokeRect(10,89,146,12);
       ctx.strokeRect(10,104,146,12);
+      write("Here, there is an accurate",160,70,"black","10px Arial");
+      write("represenation; two seats",160,80,"black","10px Arial");
+      write("for red, three for blue",160,90,"black","10px Arial");
   } else if (strokeType === 1){
-    ctx.strokeRect(10,44,36,71);
+    ctx.strokeRect(10,44,27,71);
+    ctx.strokeRect(40,44,27,71);
+    ctx.strokeRect(70,44,27,71);
+    ctx.strokeRect(100,44,27,71);
+    ctx.strokeRect(130,44,27,71);
+    write("Here, however, the",160,70,"black","10px Arial");
+    write("representation is not",160,80,"black","10px Arial");
+    write("fair, there are five",160,90,"black","10px Arial");
+    write("seats for blue, and none",160,100,"black","10px Arial");
+    write("for red",160,110,"black","10px Arial");
+  } else if (strokeType === 2){
+  	write("Here, the red party",160,70,"black","10px Arial");
+    write("has the advantage",160,80,"black","10px Arial");
+    write("despite not having as",160,90,"black","10px Arial");
+    write("many voters through",160,100,"black","10px Arial");
+    write("gerrymandering.",160,110,"black","10px Arial");
+  	ctx.fillStyle = "white";
+		ctx.strokeRect(10,44,56,12);
+    ctx.strokeRect(23,56,31,45);
+    ctx.fillRect(24,55,29,5);
+    ctx.strokeRect(100,44,56,12);
+    ctx.strokeRect(115,56,27,45);
+    ctx.fillRect(116,55,25,5);
+    ctx.strokeRect(70,44,27,27);
+    ctx.strokeRect(55,57,15,44);
+    ctx.strokeStyle = "white";
+    ctx.strokeRect(70,57,27,14);
+    ctx.strokeRect(70,57,27,14);
+    ctx.strokeRect(70,57,27,14);
+    ctx.strokeStyle = "black";
+    ctx.strokeRect(99,57,15,44);
+    ctx.strokeRect(70,60,27,12);
+    ctx.fillRect(66,58,5,13);
+    ctx.fillRect(71,55,25,6);
+    ctx.fillRect(96,58,5,13);
+    ctx.strokeRect(10,104,72,11);
+    ctx.strokeRect(10,59,12,57);
+    ctx.fillRect(11,102,76,3)
+    ctx.fillRect(21,102,4,12);
+    ctx.strokeRect(70,74,11,41);
+    ctx.fillRect(66,102,5,12);
+    ctx.strokeRect(85,74,13,41);
+    ctx.strokeRect(85,101,72,14);
+    ctx.strokeRect(143,57,14,57);
+    ctx.fillRect(86,100,10,5);
+    ctx.fillRect(96,102,5,12);
+    ctx.fillRect(144,100,12,5);
+    ctx.fillRect(142,102,5,12);
   }
   console.log(strokeType);
 }
 function changeStroke(){
-	strokeType = Math.floor(Math.random() * 2);
+	strokeType = Math.floor(Math.random() * 3);
 }
   
 
 var interval = window.setInterval(intervalFunc,20);
-var interval2 = window.setInterval(changeStroke, 1000);
+var interval2 = window.setInterval(changeStroke, 5000);
 </script>
   </body>
 </html>
