@@ -15,7 +15,7 @@
     <canvas id="MyCanvas">
     </canvas>
     <script type='text/javascript'>
-var strokeType = 0;
+var strokeType;
 var populationCount = 100;
 var possibleSeats = 10;
 var arrangementPattern=0;
@@ -44,25 +44,25 @@ function intervalFunc(){
         ctx.fillRect((col * 15)-4,(row * 15) + 30,10,10);//spacing:15px
     }
   }
-
-	function horizontalStroke(){
-  	strokeType=math.round(math.random(-0.4,5.4))
-    if(strokeType === 0){
-  		ctx.stroke();
- 			ctx.rect(10,44,146,12);
- 			ctx.rect(10,59,146,12);
- 			ctx.rect(10,74,146,12);
- 			ctx.rect(10,89,146,12);
- 			ctx.rect(10,104,146,12);
-    } else if (strokeType===1){
-    	ctx.stroke();
-      ctx.rect(10,44,36,71);
-    }
-	}
-  
+  ctx.strokeStyle = "black";
+  if(strokeType === 0){
+      ctx.strokeRect(10,44,146,12);
+      ctx.strokeRect(10,59,146,12);
+      ctx.strokeRect(10,74,146,12);
+      ctx.strokeRect(10,89,146,12);
+      ctx.strokeRect(10,104,146,12);
+  } else if (strokeType === 1){
+    ctx.strokeRect(10,44,36,71);
+  }
+  console.log(strokeType);
 }
+function changeStroke(){
+	strokeType = Math.floor(Math.random() * 2);
+}
+  
+
 var interval = window.setInterval(intervalFunc,20);
-var interval2 = window.setInterval(horizontalStroke,10);
+var interval2 = window.setInterval(changeStroke, 1000);
 </script>
   </body>
 </html>
